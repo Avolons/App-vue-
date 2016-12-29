@@ -1,0 +1,35 @@
+ body{
+    	font-family: "微软雅黑";
+    	font-size: 15px;
+    	color: #5e5e5e;
+    }
+    ul{
+    	padding: 0;
+    	margin: 0;
+    	margin-top: 14px;
+    	background-color: #FFFFFF
+    }
+       li{
+       	list-style: none;
+       	height: 35px;
+       	padding: 0 16px;
+       	margin: 0;
+       	line-height: 35px;
+       	border-bottom: 1px solid #e8e8e7;
+       }
+       li a{
+       	font-size: 14px;
+       	color: #9a9a9a;
+       }
+       .name{
+       	color: #e9827a;
+       }
+       .name a{
+       	color: #e9827a;
+       }
+       .pass a{
+       	color: #ff8400;
+       }
+       .score a:nth-of-type(1){
+       	color: #ff8400;
+       }

@@ -1,0 +1,265 @@
+.mui-content {
+	color: #333;
+	font-family: "微软雅黑";
+}
+.mui-content ul li {
+	list-style: none;
+}
+.mui-content div {
+	padding: 0 15px;
+}
+.mui-content>div:nth-of-type(1) {
+	border-bottom: 1px solid #DDDDDD;
+}
+.mui-content>div>h3 {
+	font-size: 17px;
+	font-weight: 500;
+	float: left;
+	margin: 0;
+	height: 50px;
+	line-height: 50px;
+}
+.mui-content div span {
+	font-size: 20px;
+	height: 50px;
+	line-height: 50px;
+	float: right;
+}
+.mui-content div:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.mui-content .history {
+	padding: 0 30px;
+	margin: 0;
+	padding-top: 10px;
+	font-size: 0;
+}
+.mui-content .history:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+.mui-content .history li {
+	font-size: 15px;
+	text-align: center;
+	overflow: hidden;
+	box-sizing: border-box;
+	color: #AAAAAA;
+	display: inline-block;
+	width: 45%;
+	padding: 5px;
+	margin-bottom: 10px;
+	background-color: #FFFFFF;
+	border: 1px solid #DDDDDD;
+	/*opacity: 0;*/
+	height: 33px;
+	text-overflow: ellipsis;
+	white-space: pre;
+	float: left;
+}
+.mui-content #hot {
+	background-color: #dadada;
+}
+.mui-content .hot {
+	padding: 0 15px;
+	margin: 0;
+}
+.mui-content .hot li {
+	border-bottom: 1px solid #DDDDDD;
+}
+.mui-content .hot li span {
+	display: block;
+	height: 22px;
+	width: 22px;
+	border-radius: 50%;
+	float: left;
+	background-color: #0FC8C0;
+	color: #FFFFFF;
+	text-align: center;
+	margin-top: 9px;
+	margin-right: 7px;
+}
+.mui-content .hot li a {
+	font-size: 15px;
+	display: block;
+	width: 90%;
+	color: #666;
+	height: 40px;
+	line-height: 40px;
+	float: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: pre;
+}
+.mui-content .hot li:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+#search_course {
+	height: 100%;
+	width: 100%; //	display: none;
+	background-color: #FFFFFF;
+}
+#search_list {
+	padding-top: 10px;
+	background-color: transparent;
+}
+#search_list li {
+	margin-bottom: 15px;
+}
+#search_list li:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+#search_list li img {
+	box-sizing: border-box;
+	display: block;
+	float: left;
+	border: 1px solid #F7F7F7;
+}
+#search_list li div {
+	padding-left: 10px;
+	width: calc(60% - 25px);
+	padding-right: 15px;
+	float: left;
+	display: -webkit-box;
+	-webkit-box-pack: justify;
+	-webkit-box-orient: vertical;
+}
+#search_list li div h1 {
+	line-height: 1.5;
+	font-weight: 500;
+	color: #333;
+	width: 100%;
+	white-space: pre;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 13px;
+	margin: 5px 0 0;
+}
+#search_list li div h3 {
+	line-height: 1.5;
+	font-weight: 500;
+	color: #999;
+	width: 100%;
+	white-space: pre;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 12px;
+	margin: 0;
+}
+#search_list li div h4 {
+	line-height: 1.5;
+	font-weight: 500;
+	color: #e93f32;
+	width: 100%;
+	white-space: pre;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 11px;
+	margin: 0 0 5px;
+}
+.mui-bar-nav {
+	font-family: "微软雅黑";
+	background-color: #e93f32;
+}
+.mui-bar-nav>a {
+	color: #FFFFFF;
+}
+.mui-bar #static_search {
+	font-size: 20px;
+	color: #FFFFFF;
+	position: absolute;
+	right: 25px;
+}
+.mui-search .mui-placeholder {
+	color: #FFFFFF;
+}
+.mui-search .mui-placeholder .mui-icon {
+	color: #FFFFFF;
+}
+#search {
+	font-family: "微软雅黑";
+	color: #FFFFFF;
+}
+.mui-content>.mui-table-view:first-child {
+	margin: 0;
+}
+.mui-table-view:after {
+	height: 0;
+}
+#vue-container {
+	.color1 {
+		background-color: #85c683;
+	}
+	.color2 {
+		background-color: #de4343;
+	}
+	.color3 {
+		background-color: #883ab2;
+	}
+	.color4 {
+		background-color: #207fc6;
+	}
+	.mui-icon-clear {
+		position: absolute;
+		top: 0;
+		right: 0;
+		font-size: 20px;
+		color: #9E9E9E;
+	}
+	>header {
+		>.mui-input-row {
+			position: absolute;
+			left: 65px;
+			right: 65px;
+			border-radius: 0;
+			>#search {
+				background-color: transparent;
+				border-radius: 0;
+			}
+		}
+	}
+	>#search_hist {
+		>.history {
+			>li {
+				&:nth-of-type(2) {
+					float: right;
+				}
+				&:nth-of-type(4) {
+					float: right;
+				}
+			}
+		}
+	}
+	>#search_course {
+		padding-left: 15px;
+		padding-right: 15px;
+		>.mui-table-view:before{
+			display: none;
+		}
+		>ul{
+			padding-top: 0;
+			>p{
+				position: absolute;
+				left: 0;
+				top: 10px;
+				text-align: center;
+				width: 100%;
+				z-index: 1;
+			}
+			>li:nth-of-type(1){
+				margin-top: 15px;
+			}
+			>li{
+				background-color: #ffffff;
+				position: relative;
+				z-index: 2;	
+			}
+		}
+	}
+}

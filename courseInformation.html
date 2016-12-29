@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/courseinformation.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">课程详情</h1>
+		</header>
+		<div id="vue-container" v-cloak>
+			<div class="mui-content">
+				<header>
+					<img v-bind:src="src" id="imgs" />
+					<div>
+						<h1 id="title">{{title}}</h1>
+						<p id="teacher">主讲教师:{{teacher}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有效期:{{effective}}天 <br />报名时间：{{time}}</p>
+						<p id="intrdouce"> {{intrdouce}}</p>
+						<h4 id="price">￥{{price}}</h4>
+						<span></span>
+					</div>
+				</header>
+				<article>
+					<template v-if="bookList[0]">
+						<h1>配套教材</h1>
+						<ul id="teaching_list">
+							<li v-for="(item,index) in bookList">{{index+1}}.{{item.Title}}</li>
+						</ul>
+					</template>
+				</article>
+				<div class="selects">
+					<div id="callnumber" v-on:tap="call()"><span></span>咨询</div>
+					<div id="buyOut">
+						<button type="button" id="buy" v-show="Paystate===0" v-on:tap="design()">我要报名</button>
+						<button type="button" id="noBuy" v-show="Paystate===1" v-on:tap="study()">开始学习</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/fastclick.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.min.js" charset="utf-8"></script>
+		<script src="js/extra.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/app/courseinformation.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" charset="UTF-8">
+			mui.plusReady(function() {
+
+
+			})
+		</script>
+	</body>
+
+</html>

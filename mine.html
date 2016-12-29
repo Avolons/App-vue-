@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>mine</title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+		<link rel="stylesheet" href="./css/mine.css">
+	</head>
+
+	<body>
+		<div class="mui-content" id="list">
+			<div class="header_out" style="padding: 28px 0 31px 0;background-image: url(images/home/bc.png);height: 190px;">
+				<img src="images/water.png" id="avator" style="width: 86px;height: 86px;border-radius: 50%;display: block;margin: 0 auto;" />
+				<button type="button" id="btn_login" class="mui-btn   mui-btn-outlined btn_login">点击登录</button>
+			</div>
+			<ul class="mui-table-view mui-grid-view mui-grid-9">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="certificateQuery" data-href="certificateQuery.html">
+					<span class="mui-icon iconfont icon-chaxun"></span>
+					<a href="#">证书查询</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="activateLearningCard" data-href="activateLearningCard.html">
+					<span class="mui-icon iconfont icon-renwu"></span>
+					<a href="#">激活学习卡</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="myExam" data-href="myExam.html">
+					<span class="mui-icon iconfont icon-biji01"></span>
+					<a href="#">我的考试 </a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="learningRecord" data-href="learningRecord.html">
+					<span class="mui-icon iconfont icon-jilu"></span>
+					<a href="#">学习记录</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view lists">
+				<li class="mui-table-view-cell" id="myTrade" data-href="myTrade.html">
+					<span class="mui-icon iconfont icon-jiaoyi" style="color:#fb7f8c;"></span>
+					<a class="mui-navigate-right">
+						我的交易
+					</a>
+				</li>
+				<li class="mui-table-view-cell" id="myGet" data-href="myGet.html">
+					<span class="mui-icon iconfont icon-xuexi" style="color: #4faeeb;"></span>
+					<a class="mui-navigate-right">
+						我的笔记
+					</a>
+				</li>
+				<li class="mui-table-view-cell" id="myMessage" data-href="myMessage.html">
+					<span class="mui-icon iconfont icon-xiaoxi" style="color: #4faeeb;"></span>
+					<a class="mui-navigate-right">
+						我的消息
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view lists">
+				<li class="mui-table-view-cell" id="helpAndFeedBack" data-href="helpAndFeedBack.html">
+					<span class="mui-icon mui-icon-help" style="color:#f9c54d"></span>
+					<a class="mui-navigate-right">
+						帮助与反馈
+					</a>
+				</li>
+				<li class="mui-table-view-cell" id="setting" data-href="setting.html">
+					<span class="mui-icon iconfont icon-shezhi" style="color:#898989"></span>
+					<a class="mui-navigate-right">
+						设置
+					</a>
+				</li>
+			</ul>
+		</div>
+		<script src="js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/extra.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/app.js"></script>
+		<script>
+			/*
+					 页面集成click自定义出发事件，在被点击是触发，检测是否处于用户登录状态，登陆状态时切换头像和登陆按钮，假设处于非登陆状态，则使得登陆按钮可点击
+					 * */
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+			});
+			//****登陆按钮
+			var btn_login = $('#btn_login');
+
+			//****用户头像
+			var avator = document.getElementById("avator");
+
+			mui.plusReady(function() {
+
+				//************监听自定义事件，来自主页面的定义，用于检测是否处于用户登陆状态
+				window.addEventListener('clicked', function(event) {
+					//****获得事件参数
+					setTimeout(function() {
+						//清除tap事件，防止每次都进行事件绑定，由于dom2级是可以重复绑定事件的
+						btn_login.off("tap");
+						/*如果可以检测到用户的token，则表示处于登陆状态，此时应当是btn按钮转换格式*/
+						if(JSON.parse(plus.storage.getItem('header')).User.Token) {
+							btn_login.removeClass('btn_login');
+							btn_login.addClass('btn_unlogin');
+							avator.src = (plus.storage.getItem('Pic'));
+							btn_login.text(plus.storage.getItem('UserName'));
+						} else {
+							//							console.log("1");
+							//非异步操作一般不需要使用事件驱动,回调函数机制
+							btn_login.addClass('btn_login');
+
+							btn_login.removeClass('btn_unlogin');
+
+							btn_login.text('点击登陆');
+
+							avator.src = 'images/water.png';
+
+							btn_login.on('tap', function(e) {
+								urlopenwindow(function() {
+									window.addEventListener('token', function(event) {
+										//										console.log("1");
+										//获得事件参数
+										btn_login.removeClass('btn_login', function() {
+											btn_login.addClass('btn_unlogin', function() {
+												btn_login.text(plus.storage.getItem('UserName'));
+											});
+										});
+										//
+										btn_login.off('tap');
+									});
+								});
+								return false;
+							})
+						}
+					}, 10);
+					//根据id向服务器请求新闻详情
+				});
+
+				window.addEventListener('token', function(event) {
+					//获得事件参数
+					//****获得事件参数
+					setTimeout(function() {
+						//清除tap事件，防止每次都进行事件绑定，由于dom2级是可以重复绑定事件的
+						btn_login.off("tap");
+						/*如果可以检测到用户的token，则表示处于登陆状态，此时应当是btn按钮转换格式*/
+						if(JSON.parse(plus.storage.getItem('header')).User.Token) {
+							btn_login.removeClass('btn_login');
+							btn_login.addClass('btn_unlogin');
+							btn_login.text(plus.storage.getItem('UserName'));
+						} else {
+							//							console.log("1");
+							//非异步操作一般不需要使用事件驱动,回调函数机制
+							btn_login.addClass('btn_login');
+
+							btn_login.removeClass('btn_unlogin');
+
+							btn_login.text('点击登陆');
+
+							btn_login.on('tap', function(e) {
+								urlopenwindow(function() {
+									window.addEventListener('token', function(event) {
+										//										console.log("1");
+										//获得事件参数
+										btn_login.removeClass('btn_login', function() {
+											btn_login.addClass('btn_unlogin', function() {
+												btn_login.text(plus.storage.getItem('UserName'));
+											});
+										});
+										//
+										btn_login.off('tap');
+									});
+								});
+								return false;
+							})
+						}
+					}, 10);
+					//根据id向服务器请求新闻详情
+				});
+
+				var aniShow = "pop-in";
+				//只有ios支持的功能需要在Android平台隐藏；
+				if(mui.os.android) {
+					var list = document.querySelectorAll('.ios-only');
+					if(list) {
+						for(var i = 0; i < list.length; i++) {
+							list[i].style.display = 'none';
+						}
+					}
+					//Android平台暂时使用slide-in-right动画
+					if(parseFloat(mui.os.version) < 4.4) {
+						aniShow = "slide-in-right";
+					}
+				}
+				var templates = {};
+				var getTemplate = function(name, header, content) {
+					var template = templates[name];
+					//定义template为templates的name属性值
+					//一定会预加载父模板
+					if(!template) {
+						//预加载共用父模板；
+						var headerWebview = mui.preload({
+							url: header,
+							id: name + "-main",
+							styles: {
+								popGesture: "hide",
+							},
+							//侧滑返回隐藏webviw窗口，仅ios有效
+							extras: {
+								mType: 'main'
+							}
+							//额外参数，当打开新页面是有效，如果是跳转到一个已经预加载的页面，则无效
+						});
+						//预加载共用子webview
+						var subWebview = mui.preload({
+							url: !content ? "" : content,
+							id: name + "-sub",
+							styles: {
+								top: '45px',
+								bottom: '0px',
+								scrollIndicator: "none"
+							},
+							extras: {
+								mType: 'sub'
+							}
+						});
+						subWebview.addEventListener('loaded', function() {
+							setTimeout(function() {
+								subWebview.show();
+							}, 50);
+						});
+						//子页面加载完成后延迟显示
+						subWebview.hide();
+						//子页面隐藏
+						headerWebview.append(subWebview);
+						//iOS平台支持侧滑关闭，父窗体侧滑隐藏后，同时需要隐藏子窗体；
+						if(mui.os.ios) { //5+父窗体隐藏，子窗体还可以看到？不符合逻辑吧？
+							headerWebview.addEventListener('hide', function() {
+								subWebview.hide("none");
+							});
+						}
+						templates[name] = template = {
+							name: name,
+							header: headerWebview,
+							content: subWebview,
+						};
+					}
+					return template;
+					//返回出来的template中含有主模板，子模板和name属性值
+				};
+				var initTemplates = function() {
+					getTemplate('default', 'template.html');
+					mui.preload({
+						id: 'setting.html',
+						url: 'setting.html',
+						styles: {
+							scrollIndicator: "none"
+						}
+					});
+				};
+				mui.plusReady(function() {
+					initTemplates();
+				});
+
+				//*******设置页面的单独打开
+				document.getElementById("setting").addEventListener("tap", function() {
+					mui.openWindow({
+						url: 'setting.html',
+						show: {
+							duration: 200
+						}
+					})
+				});
+
+				//此处判断是否处于登陆状态
+				mui('#list').on('tap', 'li', function() {
+					var id = this.getAttribute('data-href');
+					if(!JSON.parse(plus.storage.getItem('header')).User.Token & id != "activateLearningCard.html" & id != "certificateQuery.html"&id!="helpAndFeedBack.html") {
+						mui.alert("请登录后重新尝试!");
+						return false;
+					}
+					//*********不为设置页面的情况下
+					if(id != "setting.html") {
+						var href = id;
+						var template = getTemplate('default'); //getTemplate('default');
+						//alert(template);
+						var headerWebview = template.header;
+						//获得共用子webview
+						var contentWebview = template.content;
+						var title = this.getElementsByTagName("a")[0].innerText.trim();
+						//通知模板修改标题，并显示隐藏右上角图标；
+						mui.fire(headerWebview, 'updateHeader', {
+							title: title,
+							target: href,
+							aniShow: aniShow
+						});
+						if(mui.os.ios || (mui.os.android && parseFloat(mui.os.version) < 4.4)) {
+							var reload = true;
+							if(!template.loaded) {
+								if(contentWebview.getURL() != this.href) {
+									contentWebview.loadURL(this.href);
+									//通知子页面被点击；
+									mui.fire(contentWebview, 'clicked', {
+										click: true
+									});
+								} else {
+									reload = false;
+								}
+							} else {
+								reload = false;
+							}
+							(!reload) && contentWebview.show();
+							headerWebview.show(aniShow, 150);
+						}
+					}
+				});
+			})
+		</script>
+	</body>
+
+</html>

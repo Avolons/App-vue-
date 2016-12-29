@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			body {
+				background-color: #FFFFFF;
+				font-family: "微软雅黑";
+			}
+			
+			.mui-content {
+				background-color: #FFFFFF
+			}
+			
+			.mui-content>img {
+				padding: 14px 0;
+				padding-top: 0;
+			}
+			
+			.mui-content>form {
+				padding: 0 25px;
+			}
+			
+			.mui-content>form>h6 {
+				font-size: 10.5px;
+				color: #f2b928;
+				margin-bottom: 12.5px;
+				padding-left: 14px;
+			}
+			
+			.mui-content>form input {
+				font-size: 14px;
+				display: block;
+				box-sizing: border-box;
+				border-radius: 0;
+				height: 32.5px;
+				font-family: "微软雅黑";
+				margin-bottom: 9px;
+			}
+			
+			.mui-content>form>img {}
+			
+			#code {
+				float: left;
+				width: 50%;
+				margin-right: 12px;
+			}
+			
+			#Verification {}
+			
+			.mui-content>form>div {
+				width: 100%;
+				height: 32.5px;
+			}
+			
+			.mui-content>form>div:nth-of-type(1) {
+				margin-bottom: 9px;
+			}
+			
+			#check {
+				margin: 0 auto;
+				padding: 0;
+				height: 32.5px;
+				line-height: 32.5px;
+				border-radius: 0;
+				display: block;
+				font-size: 14px;
+				width: 30%;
+				color: #FFFFFF;
+				background-color: #f2b928;
+				border: none;
+				border-radius: 3px;
+			}
+			
+			li {
+				list-style: none;
+			}
+			
+			ul {
+				padding: 20px 25px;
+				border-top: 4.5px solid #f3f3f3;
+			}
+			
+			ul li {
+				padding-left: 14px;
+				height: 32px;
+				line-height: 32px;
+				border: 1px solid #ededed;
+				font-size: 14px;
+				color: #828282;
+				margin-bottom: 7.5px;
+			}
+			#certList{
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content" id="queryList">
+			<img src="images/home/home_new2.png" width="100%" />
+			<form>
+				<h6>*请填写如下信息,证书查询操作5秒后方能进行二次查询</h6>
+				<input type="text" id="yours" value="" placeholder="请输入姓名" />
+				<input type="text" id="number" value="" placeholder="请输入身份证号" />
+				<div><button type="button" id="check">查询</button></div>
+			</form>
+			<div id="certList">
+				
+			</div>
+		</div>
+		<script src="js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/md5.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/extra.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" charset="UTF-8">
+			mui.plusReady(function() {
+				mui.init();
+				/*var certificateQuery = [
+					["姓名 : 黄娇娇", "身份证号 : 30683199208117325", "获得证书 : 专项技术证书", "获证时间 : 2016-04-25", "获证方式 : 凭自己的努力获得"],
+					["姓名 : 黄娇娇", "身份证号 : 30683199208117325", "获得证书 : 专项技术证书", "获证时间 : 2016-04-25", "获证方式 : 凭自己的努力获得"]
+				]*/
+				//********创建证书内容
+				var createFragment = function(data) {
+					var fragment = document.createDocumentFragment();
+					for(var i = 0; i < data.length; i++) {
+						var ul = document.createElement("ul");
+						ul.innerHTML = '<li>姓名 :' + data[i].Name + '</li><li>身份证号 : ' + data[i].IdNumber + '</li><li>获得证书 : ' + data[i].CertName + '</li><li>获证时间 : ' + data[i].Time + '</li><li>获证方式 : ' + data[i].Obtaintype + '</li>'
+						fragment.appendChild(ul);
+					}
+					return fragment;
+				};
+				var newList=document.getElementById("certList"); 
+				
+				var names = document.getElementById("yours");
+				//姓名
+				var number = document.getElementById("number");
+				//身份证号码
+				var check = document.getElementById("check");
+				//查询
+				var data = {
+
+				};
+				//定义分页数量
+//				var count = 1;
+				names.addEventListener('input', function() {
+					this.onblur = function() {
+						this.onblur = null;
+						var re = new RegExp('^[\\u4e00-\\u9fa5]{0,}$');
+						//只能是汉字
+						if(re.test(this.value)) {
+							data.name = this.value;
+						} else {
+							mui.alert("请填写正确的姓名", '格式错误', '是');
+						}
+
+					}
+				})
+				number.addEventListener('input', function() {
+					this.onblur = function() {
+						this.onblur = null;
+						var re = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/;
+						if(re.test(this.value)) {
+							data.number = this.value;
+						} else {
+							mui.alert("请填写正确的身份证号码", '格式错误', '是');
+						}
+
+					}
+				})
+
+				//*********信息查询
+				function messagecheck() {
+					data.name=names.value;
+					data.number=number.value;
+					var md_five=md5(data.name+123456+data.number);
+					//清空之前的登陆信息
+					newList.innerHTML=null;
+					//检查是否填写姓名
+					if(data.name) {
+						//检查是否填写身份证号码
+						if(data.number) {
+							//检查身份证号码是否符合格式，正则匹配
+							if ((/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/).test(data.number)) {
+							var header = JSON.parse(plus.storage.getItem('header'));
+							var datas = JSON.stringify({
+								Header: header,
+								Body: {
+									PageIndex: 1,
+									PageSize: 100, 
+									Name:data.name ,
+                                    IdNumber:data.number,
+                                    VerificationCode:md_five 
+								}
+							});
+							sendAjax('api/Course/GetCertificateList', datas, function(data) {
+								if(data.Body.TotalCount > 0) {
+									newList.appendChild(createFragment(data.Body.Items));
+//									count++;
+									$(check).off('tap');
+									check.style.backgroundColor='#dadada';
+									setTimeout(function() {
+										$(check).on('tap', function() { 
+											messagecheck();
+										});
+										check.style.backgroundColor='#f2b928';
+									}, 5000);
+								} else {
+									newList.innerHTML='未查到相关数据';
+									$(check).off('tap');
+									check.style.backgroundColor='#dadada';
+									setTimeout(function() {
+										$(check).on('tap', function() {
+											messagecheck();
+										});
+										check.style.backgroundColor='#f2b928';
+										
+									}, 5000);
+								}
+							}, function() {
+								$(check).off('tap');
+								check.style.backgroundColor='#dadada';
+								setTimeout(function() {
+									$(check).on('tap', function() {
+										messagecheck();
+									});
+									check.style.backgroundColor='#f2b928';
+								}, 5000);
+							});
+							} else{
+								mui.alert("请填写正确的身份证号码", '格式错误', '是');
+							}
+							
+						} else {
+							mui.alert('请填写身份证号码', '信息补全', '是');
+						}
+					} else {
+						mui.alert('请填写姓名', '信息补全', '是');
+					}
+				}
+
+				$(check).on('tap', function() {
+					messagecheck();
+				})
+			})
+		</script>
+	</body>
+
+</html>

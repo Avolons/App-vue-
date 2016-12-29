@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<style>
+		html{
+			height: 100%;
+		}
+		body{
+			height: 100%;
+			background-color: #FFFFFF;
+		}
+			body {
+				font-family: "微软雅黑";
+			}
+			body .mui-bar-nav{
+    			background-color: #e93f32;
+		    }
+		    .mui-bar h1{
+		    	color: #FFFFFF;
+		    	font-family: "微软雅黑";
+		    	font-size:20px ;
+		    }
+		     .mui-bar-nav a{
+		     	color: #FFFFFF;
+		     }
+			.area {
+				margin: 20px auto 0px auto;
+			}
+			
+			.mui-input-group {
+				margin-top: 10px;
+			}
+			
+			.mui-input-group:first-child {
+				margin-top: 20px;
+			}
+			
+			.mui-input-group label {
+				width: 22%;
+			}
+			
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				width: 78%;
+			}
+			
+			.mui-checkbox input[type=checkbox],
+			.mui-radio input[type=radio] {
+				top: 6px;
+			}
+			
+			.mui-content-padded {
+				margin-top: 25px;
+			}
+			
+			.mui-btn {
+				padding: 10px;
+			}
+			
+			.link-area {
+				display: block;
+				text-align: center;
+			}
+			
+			.link-area:after {
+				content: "";
+				display: block;
+				clear: both;
+			}
+			
+			.link-area>a {
+				font-size: 11px;
+				color: #868686;
+			}
+			
+			.spliter {
+				color: #bbb;
+				padding: 0px 8px;
+			}
+			
+			.oauth-area {
+				position: absolute;
+				bottom: 20px;
+				left: 0px;
+				text-align: center;
+				width: 100%;
+				padding: 0px;
+				margin: 0px;
+			}
+			
+			.oauth-area .oauth-btn {
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				background-size: 30px 30px;
+				background-position: center center;
+				background-repeat: no-repeat;
+				margin: 0px 20px;
+				/*-webkit-filter: grayscale(100%); */
+				border: solid 1px #ddd;
+				border-radius: 25px;
+			}
+			
+			.oauth-area .oauth-btn:active {
+				border: solid 1px #aaa;
+			}
+			
+			.oauth-area .oauth-btn.disabled {
+				background-color: #ddd;
+			}
+			
+			#character {
+				height: 130px;
+				display: block;
+				margin: 0 auto;
+				margin-top: 40px;
+				margin-bottom: 30px;
+			}
+			
+			#login-form {
+				margin: 0 50px;
+				/*margin-bottom: 40px;*/
+				background-color: transparent
+			}
+			
+			.mui-input-row {
+				border: 1px solid #8c8c8c;
+				width: 100%;
+				margin: 10px auto;
+				border-radius: 6px;
+			}
+			
+			#mui-icon {
+				float: left;
+				margin-top: 6px;
+				margin-left: 6px;
+				color: #808080;
+			}
+			
+			.mui-input-clear {
+				float: left;
+				width: 80%;
+				padding: 0;
+				margin: 0;
+			}
+			
+			#account {
+				padding: 0;
+				margin: 0;
+				width: 87%;
+				height: 100%;
+				float: right;
+			}
+			
+			#password {
+				padding: 0;
+				margin: 0;
+				width: 87%;
+				height: 100%;
+				float: right;
+			}
+			
+			.mui-input-group {
+				margin: 0 auto;
+				background-color: transparent;
+			}
+			
+			.mui-input-group ul {
+				background-color: transparent;
+				border: 1px solid #808080;
+				border-radius: 6px;
+				color: #808080;
+				margin-top: -30px;
+			}
+			
+			#mui-content-padded {
+				margin: 10px 50px;
+			}
+			
+			.mui-input-group .mui-input-row {
+				height: 40px;
+			}
+			
+			.mui-btn-blue,
+			.mui-btn-primary,
+			input[type=submit] {
+				background-color: #E93F32;
+				border: none;
+				padding: 5px;
+			}
+			
+			a {
+				color: #0FC8C0;
+			}
+			
+			.mui-btn-block {
+				margin-bottom: 0;
+			}
+			
+			.link-area {
+				margin-top: 10px;
+			}
+			
+			body .mui-input-group .mui-input-row:after {
+				height: 0;
+			}
+			
+			.mui-input-group:before {
+				height: 0;
+			}
+			
+			.mui-input-group:after {
+				height: 0;
+			}
+			
+			#account {
+				font-family: "微软雅黑";
+				font-size: 15px;
+			}
+			
+			#password {
+				font-family: "微软雅黑";
+				font-size: 15px;
+			}
+			
+			#autoLogin {
+				display: block;
+				float: left;
+			}
+			
+			#forgetPassword {
+				float: right;
+			}
+			/*注册*/
+			
+			#regin {
+				position: fixed;
+				z-index: 999;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				background-color: #FFFFFF;
+				display: none;
+			}
+			
+			#regin>h1 {
+				height: 44px;
+				background-color: #e93f32;
+				font-size: 17px;
+				line-height: 44px;
+				color: #FFFFFF;
+				text-align: center;
+				font-weight: 400;
+				padding: 0 10px;
+				margin: 0;
+				margin-bottom: 40px;
+			}
+			
+			#regin>h1>.left {
+				float: left;
+				display: block;
+				font-size: 25px;
+				transform: scaleY(1.2);
+			}
+			
+			#regin>h1>.right {
+				float: right;
+			}
+			
+			#regin>div {
+				height: 50px;
+				font-family: "微软雅黑";
+				width: 85%;
+				margin: 0 auto;
+				display: block;
+				margin-bottom: 25px;
+				position: relative;
+			}
+			
+			#regin>div>input {
+				font-family: "微软雅黑";
+				width: 100%;
+				height: 100%;
+				display: block;
+				font-size: 14px;
+				margin: 0;
+			}
+			
+			#regin>div>span {
+				position: absolute;
+				left: 10px;
+				line-height: 50px;
+				font-size: 14px;
+			}
+			
+			#forgetpass {
+				position: fixed;
+				z-index: 999;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				background-color: #FFFFFF;
+				display: none;
+			}
+			
+			#forgetpass>h1 {
+				height: 44px;
+				background-color: #e93f32;
+				font-size: 17px;
+				line-height: 44px;
+				color: #FFFFFF;
+				text-align: center;
+				font-weight: 400;
+				padding: 0 10px;
+				margin: 0;
+				margin-bottom: 40px;
+			}
+			
+			#forgetpass>h1>.left {
+				float: left;
+				display: block;
+				font-size: 25px;
+				transform: scaleY(1.2);
+			}
+			
+			#forgetpass>h1>.right {
+				float: right;
+			}
+			
+			#forgetpass>div {
+				height: 50px;
+				font-family: "微软雅黑";
+				width: 85%;
+				margin: 0 auto;
+				display: block;
+				margin-bottom: 25px;
+				position: relative;
+			}
+			
+			#forgetpass>div>input {
+				font-family: "微软雅黑";
+				width: 100%;
+				height: 100%;
+				display: block;
+				font-size: 14px;
+				margin: 0;
+			}
+			
+			#forgetpass>div>span {
+				position: absolute;
+				left: 10px;
+				line-height: 50px;
+				font-size: 14px;
+			}
+			
+			.daojishi {
+				width: 30%;
+				float: right;
+				height: 100%;
+				font-size: 14px;
+				color: #E93F32;
+				border-color: #e93f32;
+			}
+			
+			#startreg {
+				height: 50px;
+				font-family: "微软雅黑";
+				width: 85%;
+				margin: 0 auto;
+				display: block;
+				font-size: 14px;
+				background-color: #E93F32;
+				color: #FFFFFF;
+			}
+			
+			#startpass {
+				height: 50px;
+				font-family: "微软雅黑";
+				width: 85%;
+				margin: 0 auto;
+				display: block;
+				font-size: 14px;
+				background-color: #E93F32;
+				color: #FFFFFF;
+			}
+			
+			#btn-reg {
+				width: 45%;
+				float: right;
+				background-color: #FFFFFF;
+				color: #E93F32;
+				box-sizing: border-box;
+				border: 1px solid #E93F32;
+			}
+			
+			#login {
+				width: 45%;
+				float: left;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">登录</h1>
+		</header>
+		<!--注册框，密码重置-->
+		<aside id="regin">
+			<h1><span class="left"><</span>注册<span class="right">取消</span></h1>
+			<div class="phonenumber">
+				<span>手机号码：</span>
+				<input type="number" placeholder="请输入手机号码快速注册"  style="padding-left:75px;" />
+			</div>
+			<div class="twocode">
+				<span>验证码：</span>
+				<input type="text" placeholder="请输入验证码"  style="padding-left:75px;width:64%;float: left;" />
+				<button type="button" class="daojishi">获取验证码</button>
+			</div>
+			<div class="code">
+				<span>设置密码：</span>
+				<input type="text" placeholder="请输入6到16位的密码"  style="padding-left:75px;" />
+			</div>
+			<div class="codeagain">
+				<span>确认密码：</span>
+				<input type="text" placeholder="请再次输入密码"  style="padding-left:75px;" />
+			</div>
+			<button type="button" id="startreg">立即注册</button>
+		</aside>
+
+		<aside id="forgetpass">
+			<h1><span class="left"><</span>重置密码<span class="right">取消</span></h1>
+			<div class="phonenumber">
+				<span>手机号码：</span>
+				<input type="number" placeholder="请输入手机号码"  style="padding-left:75px;" />
+			</div>
+			<div class="twocode">
+				<span>验证码：</span>
+				<input type="text" placeholder="请输入验证码"  style="padding-left:75px;width:64%;float: left;" />
+				<button type="button" class="daojishi">获取验证码</button>
+			</div>
+			<div class="code">
+				<span>设置密码：</span>
+				<input type="text" placeholder="请输入6到16位的密码"  style="padding-left:75px;" />
+			</div>
+			<div class="codeagain">
+				<span>确认密码：</span>
+				<input type="text" placeholder="请再次输入密码"  style="padding-left:75px;" />
+			</div>
+			<button type="button" id="startpass">重置密码</button>
+		</aside>
+
+		<div class="mui-content">
+			<img id="character" src="images/help/logo.png" />
+			<form id='login-form' class="mui-input-group">
+				<div class="mui-input-row">
+					<span id="mui-icon" class="mui-icon mui-icon-contact"></span>
+					<input id='account' type="text" class="mui-input-clear mui-input" placeholder="手机号/邮箱">
+				</div>
+				<div class="mui-input-row">
+					<span id="mui-icon" class="mui-icon mui-icon-locked"></span>
+					<input id='password' type="password" class="mui-input-clear mui-input" placeholder="密码">
+				</div>
+				<div class="link-area">
+					<!--<a href="javascript:void(0);" id='autoLogin' class="checked">记住密码</a>-->
+					<a href="javascript:void(0);" id='forgetPassword'>忘记密码?</a>
+				</div>
+			</form>
+
+			<div id="mui-content-padded" class="mui-content-padded">
+				<button id='login' class="mui-btn mui-btn-block mui-btn-primary">登录</button>
+				<button id='btn-reg' class="mui-btn mui-btn-block mui-btn-primary">注册</button>
+			</div>
+			<div class="mui-content-padded oauth-area">
+			</div>
+
+		</div>
+
+		<script src="js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/extra.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.enterfocus.js"></script>
+		<script>
+			//自执行函数
+			(function() {
+				mui.init({
+					statusBarBackground: '#f7f7f7'
+				});
+				//页面初始化，设置状态栏颜色，只有ios可以使用
+				mui.plusReady(function() {
+					plus.screen.lockOrientation("portrait-primary");
+					//锁定屏幕为竖屏显示
+					var a = 0;
+					//检查 "登录状态/锁屏状态" 结束
+					var loginButton = document.getElementById('login');
+					//账号按钮
+					var accountBox = document.getElementById('account');
+					//密码按钮
+					var passwordBox = document.getElementById('password');
+					//自动登录按钮
+					//					var autoLoginButton = document.getElementById("autoLogin");
+					//注册按钮
+					var regButton = document.getElementById('btn-reg');
+					//忘记密码按钮
+					var forgetButton = document.getElementById('forgetPassword');
+					//注册页面
+					var reginbox = $("#regin");
+					var fotsetbox = $("#forgetpass");
+					//源页面id
+					var webviewId = null;
+					//header文件
+					//注册数据集合
+					var regmsg = {
+						title:"注册",
+						alertmessage: ["注册成功", "注册失败，请重新尝试"],
+
+						url: "api/User/Register",
+						//手机号码
+						phone: $("#regin>.phonenumber>input"),
+						//密码
+						code: $("#regin>.code>input"),
+						//再次输入密码
+						codeagain: $("#regin>.codeagain>input"),
+						//二维码
+						twocode: $("#regin>.twocode>input"),
+						//发送按钮
+						sendcode: $("#regin .daojishi"),
+						//注册按钮
+						btn : $("#startreg"),
+						SendType:0,
+					};
+					//找回密码数集合
+					var pasmsg = {
+						title:"找回密码",
+						alertmessage: ["密码设置成功", "密码设置失败，请重新尝试"],
+
+						url: "api/User/ChangePassword",
+						//手机号码
+						phone: $("#forgetpass>.phonenumber>input"),
+						//密码
+						code: $("#forgetpass>.code>input"),
+						//再次输入密码
+						codeagain: $("#forgetpass>.codeagain>input"),
+						//二维码
+						twocode: $("#forgetpass>.twocode>input"),
+						//发送按钮
+						sendcode: $("#forgetpass .daojishi"),
+						//忘记密码按钮
+						btn: $("#startpass"),
+						SendType:1,
+					};
+
+					var header = JSON.parse(plus.storage.getItem('header'));
+
+					//页面打开时获得上层页面传输过来的id值
+					window.addEventListener('logined', function(event) {
+						//获得事件参数
+						webviewId = event.detail.webviewId;
+					});  
+ 
+					//登陆事件
+					loginButton.addEventListener('tap', function(event) {
+						var loginInfo = {
+							Account: accountBox.value,
+							Password: passwordBox.value
+						};
+						//******对账号密码进行判断
+						
+						//自定义的账号格式规则
+						if(loginInfo.Password.length < 6) {
+							mui.alert('密码最短为 6 个字符');
+							return false;
+						}
+
+						var data = JSON.stringify({
+							Header: header,
+							Body: loginInfo
+						});
+						console.log(data);
+						sendAjax('api/User/Login', data, function(data) {
+							console.log(JSON.stringify(data));
+							if(data.Code == 200) {
+								//调试代码
+								//设置token值
+								header.User.Token = data.Body.Token;
+								plus.storage.setItem("header", JSON.stringify(header));
+								plus.storage.setItem("UserName", data.Body.Name);
+								plus.storage.setItem("Pic", data.Body.Pic);
+								//添加自定义事件，通知源页面token值以获取到
+								var detailPage = plus.webview.getWebviewById(webviewId);
+								console.log(detailPage);
+								//触发源页面的token事件
+								mui.fire(detailPage, 'token', {
+									token: true
+								});
+								//打开源页面          
+								mui.openWindow({
+									id: webviewId
+								});
+								//关闭当前页面
+								plus.webview.hide(plus.webview.currentWebview());
+
+							} else {
+								mui.alert('账号或密码错误');
+							}
+						}, function() {
+							mui.alert('网络错误，请稍后重试');
+						})
+
+					});
+
+					//注册、忘记密码页面逻辑数据
+					function forgetandreg(message) {
+						//倒计时定时器
+						var time;
+						//二维码发送事件注册函数
+						function addSendCode() {
+							message.sendcode.one("tap", function() {
+								//ajax函数 手机号码
+								var data = JSON.stringify({
+									Header: header,
+									Body: {
+										//手机号码
+										Mobilephone: message.phone.val(),
+										SendType:message.SendType,
+									}
+								});
+								//发送ajax，获取回到后进行计时器计时;
+								sendAjax("api/User/SendVerificationCode", data, function(event) {
+									console.log(JSON.stringify(event));
+									//返回正常是可以进行倒计时计算
+									if(event.Code == 200) {
+										//60秒一个轮回
+										var number = 60;  
+										//立即将其换成60，另外可添加特殊样式
+										message.sendcode.text(number);
+										//计时器开始
+										time = setInterval(function() {
+											number--;
+											message.sendcode.text(number);
+											//最后一秒是再次注册一个单次执行函数
+											if(number == 1) {
+												clearInterval(time);
+												message.sendcode.text("获取验证码");
+												addSendCode();
+											}
+										}, 1000);
+									} else {
+										//错误时返回错误信息，重新注册事件
+										mui.alert(event.Message);
+										addSendCode();
+									}
+									//错误时弹出错误信息，并且重新注册事件
+								}, function() {
+									mui.alert("网络错误，请重新尝试");
+									addSendCode();
+								})
+							})
+						}
+						//注册验证码发送事件
+						addSendCode();
+						//注册事件
+						message.btn.on("tap", function() {
+//							console.log(JSON.stringify(message));
+							//先检查所有的输入框的值是否正确
+							if(!(/^1[34578]\d{9}$/.test(message.phone.val()))) {
+								mui.alert("请输入正确的手机号码");
+								return false;
+							};
+							//检查验证码
+							if(!message.twocode.val()) {
+								mui.alert("请输入验证码");
+								return false;
+							};
+							//检查密码格式
+							if(message.code.val().length < 6 || message.code.val().length > 16) {
+								mui.alert("密码格式错误，请重新尝试");
+								return false;
+							};
+							//检查两次密码是否相同
+							if(message.code.val() != message.codeagain.val()) {
+								mui.alert("两次密码输入不同，请检查后再尝试");
+								return false;
+							};
+
+							//按要求进行数据拼接
+							var codedata = JSON.stringify({    
+								Header: header,
+								Body: {
+									Phone: message.phone.val(),
+									PassWord: message.code.val(),
+									VerificationCode: message.twocode.val()
+								},
+							});
+
+							sendAjax(message.url, codedata, function(event) {
+								//条件判断
+								if(event.Code == 200) {
+									if(message.title === "注册") {
+										console.log(1);
+										header.User.Token = event.Body.Token;
+										plus.storage.setItem("header", JSON.stringify(header));
+										plus.storage.setItem("UserName", event.Body.Name);
+										plus.storage.setItem("Pic", event.Body.Pic);
+										//添加自定义事件，通知源页面token值以获取到
+										var detailPage = plus.webview.getWebviewById(webviewId);
+										//触发源页面的token事件
+										mui.fire(detailPage, 'token', {
+											token: true
+										});
+										mui.alert(message.alertmessage[0]);
+										//打开源页面          
+										mui.openWindow({
+											id: webviewId
+										});
+										//关闭当前页面
+										plus.webview.hide(plus.webview.currentWebview());
+										reginbox.hide();
+										fotsetbox.hide();
+									} else {
+										mui.alert("密码重置成功");
+										reginbox.hide();
+										fotsetbox.hide();
+									}
+								} else {
+									mui.alert(message.alertmessage[1]);
+								}
+
+							}, function() {
+								mui.alert(message.alertmessage[1]);
+							})
+						});
+						return false;
+					}
+
+					forgetandreg(regmsg);
+					forgetandreg(pasmsg);
+					//重写返回函数
+					function backrset() {
+						//加入当前页面处于注册状态，点击返回
+						if(reginbox.css("display") == "block" || fotsetbox.css("display") == "block" ) {
+							reginbox.hide();
+							fotsetbox.hide();
+						} else {
+							plus.webview.hide(plus.webview.currentWebview());
+						}
+					}  
+
+					//左右按钮添加函数，点击关闭
+					$("#regin>h1").on("tap", "span", function() {
+						backrset();
+					});
+					$("#forgetpass>h1").on("tap", "span", function() {
+						backrset();
+					});
+
+					//注册按钮
+					regButton.addEventListener("tap", function() {
+						reginbox.show();
+					})
+
+					//忘记密码按钮
+					forgetButton.addEventListener('tap', function() {
+						fotsetbox.show();
+					});
+
+					var backButtonPress = 0;
+					//重写back函数
+					mui.back = function() {
+						backrset();
+					};
+				});
+				//第一次点击一定会弹出再按一次退出的对话框
+			}());
+		</script>
+	</body>
+
+</html>

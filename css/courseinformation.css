@@ -1,0 +1,231 @@
+@charset "UTF-8";
+body {
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color: #333333;
+	background-color: #FFFFFF;
+}
+
+body .mui-bar-nav {
+	background-color: #e93f32;
+}
+
+.mui-bar> h1 {
+	color: #FFFFFF;
+	font-family: "微软雅黑";
+	font-size: 16px;
+}
+
+.mui-bar> a {
+	color: #FFFFFF;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 400;
+}
+
+li {
+	list-style: none;
+}
+
+.mui-content {
+	padding: 0 15px;
+	background-color: #FFFFFF;
+}
+
+.mui-content> header {
+	padding: 0;
+	box-sizing: content-box;
+	padding-top: 44px;
+}
+
+.mui-content> header:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.mui-content> header> img {
+	width: 100%;
+	display: block;
+}
+
+.mui-content> header> div> h1 {
+	font-weight: 700;
+	margin: 0;
+	font-size: 16px;
+	line-height: 40px;
+}
+
+.mui-content> header> div> p {
+	font-size: 12px;
+	margin: 0;
+	color: #a4a4a4;
+}
+
+.mui-content> header> div> #intrdouce {
+	font-size: 13px;
+	margin: 0;
+	color: #757575;
+}
+
+.mui-content> header> div> h4 {
+	font-size: 17px;
+	color: #f20010;
+	line-height: 33px;
+	border-top: 1px solid #dadada;
+	margin-top: 10px;
+}
+
+.mui-content> header> div> span {
+	height: 4px;
+	margin: 0 -15px;
+	display: block;
+	width: calc(100% + 30px);
+	background-color: #F3F3F3;
+}
+
+.selects {
+	font-size: 0;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 50px;
+}
+
+#callnumber {
+	float: left;
+	width: 30%;
+	text-align: center;
+	font-size: 15px;
+	height: 50px;
+	line-height: 50px;
+	background-color: #F3F3F3;
+	color: #e93f32;
+}
+
+#callnumber>span {
+	display: inline-block;
+	background-image: url("../images/course/zixun.png");
+	background-size: cover;
+	height: 20px;
+	width: 20px;
+	line-height: 50px;
+	/* margin-top: 10px; */
+	/* float: left; */
+	margin-bottom: -5px;
+	margin-right: 2px;
+}
+
+#buyOut {
+	float: left;
+	display: inline-block;
+	width: 70%;
+	height: 50px;
+	line-height: 50px;
+	background-color: #e93f32;
+}
+
+#buyOut> button {
+	font-size: 15px;
+	color: white;
+	background-color: #e93f32;
+	height: 50px;
+	line-height: 50px;
+	border-radius: 0;
+	border: none;
+	width: 100%;
+	border-radius: 2px;
+	padding: 0;
+}
+
+#studyOut {
+	width: 45%;
+	display: inline-block;
+}
+
+#study {
+	font-size: 13px;
+	color: white;
+	background-color: #0FC8C0;
+	border-radius: 0;
+	border: none;
+	padding: 5px 0;
+	width: 100%;
+}
+
+.mui-content> article {
+	padding-bottom: 55px;
+}
+
+.mui-content> article> p {
+	margin: 10px 0;
+	font-size: 16px;
+	color: #333;
+	font-weight: 500;
+}
+
+.mui-content> article> p:nth-of-type(4) {
+	font-size: 13px;
+	color: #999999;
+}
+
+.mui-content> article> h1 {
+	width: 100%;
+	font-size: 15px;
+	color: #1a1a1a;
+	font-weight: 700px;
+	line-height: 35px;
+	margin: 0;
+}
+
+.mui-content> article ul {
+	padding: 0;
+	margin: 0;
+}
+
+.mui-content> article #course_list {
+	max-height: 52px;
+	overflow: hidden;
+}
+
+.mui-content> article li {
+	font-size: 13px;
+	margin: 0 0 10px 0;
+	color: #555555;
+}
+
+.mui-content> article h6 {
+	font-size: 14px;
+	color: #0FC8C0;
+}
+
+.mui-content> article ul li a {
+	color: #222222;
+}
+
+.mui-content> article ul li button {
+	border-radius: 2px;
+	background-color: #0FC8C0;
+	color: #FFFFFF;
+	padding: 1px 10px;
+	float: right;
+	border: none;
+}
+
+.mui-content> article ul li .updown {
+	border-radius: 2px;
+	background-color: #0FC8C0;
+	color: #FFFFFF;
+	padding: 1px 10px;
+	float: right;
+	border: none;
+	display: block;
+	font-size: 14px;
+}

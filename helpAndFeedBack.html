@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>help</title>
+     <link href="css/mui.min.css" rel="stylesheet"/>
+     <style type="text/css">
+     	.mui-table-view-cell:after{
+     		left: 0;
+     		    transform: scaleY(1);
+     	}
+     	.mui-table-view-cell{
+     		margin-top: 10px;
+     		/*border-top: 1px solid #c8c7cc;*/
+     		background-color: #FFFFFF;
+     	}
+     	.mui-table-view{
+     		background-color: transparent;
+     		font-family: "微软雅黑";
+     		font-size: 15px;
+     		color: #515151;
+     	}
+     	.mui-table-view:before{
+     		height: 0;
+     	}
+     </style>
+</head>
+<body>
+	<div class="mui-content">
+	  <ul class="mui-table-view" id="list">
+			<li class="mui-table-view-cell" data-id = "question1.html">
+				<a class="mui-navigate-right">
+					1.忘记密码怎么办？
+				</a>
+			</li>
+			<li class="mui-table-view-cell" data-id = "question2.html">
+				<a class="mui-navigate-right">
+					2.激活学习卡遇到问题怎么办？
+				</a>
+			</li>
+			<li class="mui-table-view-cell" data-id = "question3.html">
+				<a class="mui-navigate-right">
+					3.课程状态显示已过期怎么办？
+				</a>
+			</li>
+			<li class="mui-table-view-cell" data-id = "question4.html">
+				<a class="mui-navigate-right">
+					4.在APP上学习PC端是否也会增加？
+				</a>
+			</li>
+			<li class="mui-table-view-cell">
+				<a class="mui-navigate-right" data-id = "question5.html">
+					5.如何下载学习资料？
+				</a>
+			</li>
+			<li class="mui-table-view-cell" data-id = "question6.html">
+				<a class="mui-navigate-right">
+					6.无法查询到证书怎么办？
+				</a>
+			</li>
+			<li class="mui-table-view-cell" id="concat">
+				<a>
+					联系客服
+				</a>
+			</li>
+	  </ul>
+	</div>
+	<script src="js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/mui.min.js"></script>
+	<script src="js/extra.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="UTF-8">
+    mui.plusReady(function(){
+      	mui.init();
+    	$(".mui-table-view-cell").on("tap",function(){
+    		var id=$(this).data("id")||null;
+    		if (id) {
+    			mui.openWindow({
+    				url:id,
+    				id:id,
+    			})
+    		}else{
+    			plus.device.dial(AppConfig.phoneNumber, true ); 
+    		}
+    	});
+    	
+    })
+
+      	
+    </script>
+</body>
+</html>

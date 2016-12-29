@@ -1,0 +1,80 @@
+body {
+  font-family: "微软雅黑";
+}
+
+.mui-grid-9>li {
+  box-sizing: border-box;
+  width: 25%;
+  float: left
+}
+
+.mui-grid-view.mui-grid-9{
+  box-sizing: border-box;
+}
+
+.mui-grid-view.mui-grid-9 .mui-media .mui-icon {
+  font-size: 20px;
+}
+
+.mui-grid-view.mui-grid-9 .mui-table-view-cell>a:not(.mui-btn) {
+  font-size: 13px;
+  padding: 0;
+  color: #818181;
+}
+
+.mui-grid-view.mui-grid-9 {
+  height: 69px;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+.mui-table-view:after {
+  height: 0;
+}
+
+.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+  border: none;
+  padding: 12.5px 0;
+}
+
+.lists .mui-table-view-cell>span {
+  position: absolute;
+  left: 10px;
+  font-size: 21px;
+  color: #a1a1a1;
+  font-weight: 500;
+}
+
+.mui-table-view li .mui-navigate-right {
+  font-size: 15px;
+  padding-left: 42px;
+  color: #808080;
+}
+
+.lists {
+  margin-bottom: 10px;
+}
+/*登陆按钮*/
+#list .header_out .btn_login{
+  width: 120px;
+  margin: 0 auto;
+  margin-top:22px;
+  display: block;
+  border-radius: 0;
+  font-size: 16px;
+  color:#ffffff;
+  padding:3px 0;
+  border: none;
+  border: 1px solid #ffffff;
+}
+#list .header_out .btn_unlogin{
+  width: 120px;
+  margin: 0 auto;
+  margin-top:22px;
+  display: block;
+  border-radius: 0;
+  font-size: 14px;
+  color:#ffffff;
+  padding:3px 0;
+  border: none;
+}

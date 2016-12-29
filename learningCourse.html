@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+		<link rel="stylesheet" href="css/video-js.min.css" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/learningcourse.css" />
+
+	</head>
+
+	<body>
+		<span>加载中......</span>
+		<div id="vue-container" v-cloak>
+			<header class="mui-bar mui-bar-nav">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<h1 class="mui-title" id="title">{{Title}}</h1>
+			</header>
+			<div class="mui-content" id="mui-content">
+				<video id="zjzxVideo" class="video-js vjs-default-skin vjs-big-play-centered video-zjzx-fullscreen" controls preload="auto" poster="images/course/logo.jpg" ata-setup="{}">
+				</video>
+				<ul id="table_one">
+					<li v-on:tap="tablecheck('course')">
+						<a href="javascript:void(0);" v-bind:class="{click:buttonCheck.course}">目录</a>
+						<ul id="table_index" class="table" v-show="buttonCheck.course">
+							<template v-if="IsFirstMenu===0">
+								<li v-for="item,index in courseList">
+									<h2>{{item.title}}</h2>
+									<ul>
+										<li v-for="ite,index in item" v-bind:class="{checked:ite.ischeck}" v-on:tap="courseClick(ite)">
+											<span class="mui-icon iconfont icon-yousanjiao"></span><a href="javascript:void(0);">{{index+1}}.{{ite.title}}</a><b>{{ite.alltime}}分钟</b>
+										</li>
+									</ul>
+								</li>
+							</template>
+							<template v-else>
+								<li id="childTitle">第一章：{{courseTitle}}</li>
+								<li v-for="item,index in courseList" v-bind:class="{checked:item.ischeck}" v-on:tap="courseClick(item)">
+									<span class="mui-icon iconfont icon-yousanjiao"></span><a href="javascript:void(0);">{{index+1}}.{{item.title}}</a><b>{{item.alltime}}分钟</b>
+								</li>
+							</template>
+
+						</ul>
+					</li>
+					<li v-on:tap="tablecheck('get')">
+						<a href="javascript:void(0);" v-bind:class="{click:buttonCheck.get}">笔记</a>
+						<ul id="get_list" v-show="buttonCheck.get" style="display: none;">
+							<button type="button" id="addCourseGet" v-on:tap="AddGet()"></button>
+							<li v-for="item in getList">
+								<img v-bind:src="item.Src" />
+								<div class="talkback">
+									<h3>{{item.UserName}}</h3>
+									<p>{{item.Contect}}</p>
+									<h6>{{item.Time}}</h6>
+								</div>
+							</li>
+						</ul>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+		<script src="js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/fastclick.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.min.js" charset="utf-8"></script>
+		<script src="js/extra.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/video.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/videojs-contrib-hls.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/app/learningcourse.js" type="text/javascript" charset="utf-8"></script>
+
+	</body>
+
+</html>

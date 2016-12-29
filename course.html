@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>course</title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+		<link rel="stylesheet" href="./css/course.css">
+	</head>
+
+	<body>
+		<div id="vue-container" v-cloak>
+			<header class="mui-bar mui-bar-nav" style="padding:0 30px;">
+				<div id="search" v-on:tap="fun_search()">
+					<span class="mui-icon mui-icon-search"></span>
+				</div>
+				<span id="message" class="mui-icon mui-icon-email" v-on:tap="fun_message()">
+				<i v-show="isMessage"></i>
+			</span>
+				<div class="course-nav">
+					<ul id="nav">
+						<li class=" level_one" id="level_one" v-bind:class="{'show':navSelect.Type.sel}">
+							<a href="javascript:void(0);" v-on:tap="fun_openNav('Type')">{{navSelect.Type.value}}<span class="mui-icon iconfont icon-down-copy-copy"></span></a>
+							<h1 v-on:tap="fun_closeAll()">收起</h1>
+							<ul id="nav_two">
+								<!--全部类别-->
+								<li id="alltype" v-on:tap="fun_selectAll()">{{navSelect.Type.child.all}}</li>
+								<!--二级点击事件-->
+								<li v-for="item in navSelect.Type.child.typeList" v-bind:class="{'taped':item.istap}" v-on:tap="fun_closeOne(item,navSelect.Type.child.typeList)">{{item.ClassName}}
+									<div class="nav_three">
+										<h1>全部{{item.ClassName}}</h1>
+										<ul>
+											<!--三级导航点击事件-->
+											<li v-for="ite in item.ChindleList" v-bind:class="{'checked':ite.ischeck}" v-on:tap="fun_closeNav2(ite,item.ChindleList)">{{ite.ClassName}}</li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</li>
+						<li class="level_one" v-bind:class="{'show':navSelect.newHot.sel}">
+							<a href="javascript:void(0);" v-on:tap="fun_openNav('newHot')">{{navSelect.newHot.value}}<span class="mui-icon iconfont icon-down-copy-copy"></span></a>
+							<ul class="select_two">
+								<li v-for="item in navSelect.newHot.child" v-bind:class="{'select':item.sel}" v-on:tap="fun_closeNav(item,navSelect.newHot)">
+									{{item.mess}}
+								</li>
+							</ul>
+						</li>
+						<li class="level_one" v-bind:class="{'show':navSelect.free.sel}">
+							<a href="javascript:void(0);" v-on:tap="fun_openNav('free')">{{navSelect.free.value}}<span class="mui-icon iconfont icon-down-copy-copy"></span></a>
+							<ul class="select_two">
+								<li v-for="item in navSelect.free.child" v-bind:class="{'select':item.sel}" v-on:tap="fun_closeNav(item,navSelect.free)">
+									{{item.mess}}
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</header>
+
+			<div class="mui-content">
+				<div id="slider" class="mui-slider mui-fullscreen">
+					<div class="mui-slider-group">
+						<div class="mui-slider-item mui-control-content mui-active">
+							<div id="scroll" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<ul class="mui-table-view" id="courseCenter">
+										<!--vue数据渲染最新课程-->
+										<li v-for="item in courseList" v-on:tap="fun_courseClick(item.Id,item.Src)">
+											<img width="40%" v-bind:src="item.Src">
+											<div>
+												<h1>{{item.Title}}</h1>
+												<h3>{{item.Introduce}}</h3>
+												<h4>￥{{item.Price}}</h4>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/fastclick.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.pullToRefresh.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.pullToRefresh.material.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.min.js" charset="utf-8"></script>
+		<script src="js/extra.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/app/course.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

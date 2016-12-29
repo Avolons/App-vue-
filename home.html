@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>home</title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/home.css" />
+	</head>
+
+	<body>
+		<div id="vue-container" v-cloak>
+			<header class="mui-bar mui-bar-nav">
+				<div id="search" v-on:tap="fun_search()">
+					<span class="mui-icon mui-icon-search"></span>
+				</div>
+				<!--消息按钮-->
+				<span id="message" class="mui-icon mui-icon-email" v-on:tap="fun_message()">
+				<i v-show="isMessage"></i>
+			</span>
+			</header>
+			<div class="mui-content">
+				<div id="slider" class="mui-slider mui-fullscreen">
+					<div class="mui-slider-group">
+						<div class="mui-slider-item mui-control-content mui-active">
+							<div id="scroll" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<!--、轮播图-->
+									<div class="mui-slider" id="sliderquery">
+										<!--轮播图主体部分-->
+										<div class="mui-slider-group mui-slider-loop" id="imglist">
+											<template v-for="(item,index) in slider">
+												<template v-if="index==0">
+													<div class="mui-slider-item mui-slider-item-duplicate" v-on:tap="fun_sliderclick(item.CourseId,item.Src)">
+														<a href="#">
+															<img v-bind:src="item.Src+'-applt'">
+														</a>
+													</div>
+													<div class="mui-slider-item" v-on:tap="fun_sliderclick(item.CourseId,item.Src)">
+														<a href="#">
+															<img v-bind:src="item.Src+'-applt'">
+														</a>
+													</div>
+												</template>
+												<template v-if="index==slider.length-1">
+													<div class="mui-slider-item" v-on:tap="fun_sliderclick(item.CourseId,item.Src)">
+														<a href="#">
+															<img v-bind:src="item.Src+'-applt'">
+														</a>
+													</div>
+													<div class="mui-slider-item mui-slider-item-duplicate" v-on:tap="fun_sliderclick(item.CourseId,item.Src)">
+														<a href="#">
+															<img v-bind:src="item.Src+'-applt'">
+														</a>
+													</div>
+												</template>
+												<template v-if="index!=slider.length-1&&index!=0">
+													<div class="mui-slider-item" v-on:tap="fun_sliderclick(item.CourseId,item.Src)">
+														<a href="#">
+															<img v-bind:src="item.Src+'-applt'">
+														</a>
+													</div>
+												</template>
+											</template>
+										</div>
+										<div class="mui-slider-indicator" id="pointlist">
+											<!--轮播图的点-->
+											<template v-for="(item,index) in slider">
+												<template v-if="index==0">
+													<div class="mui-indicator mui-active"></div>
+												</template>
+												<template v-else>
+													<div  class="mui-indicator"></div>
+												</template>
+											</template>
+										</div>
+									</div>
+									<!--大家热搜-->
+									<ul class="mui-table-view mui-grid-view mui-grid-9" id="nav_four">
+										<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="certificateQuery" data-href='certificateQuery.html'>
+											<span style="background-image: url(images/home/home_1.png);"></span>
+											<a href="#">
+												<div class="mui-media-body">证书查询</div>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="activateLearningCard" data-href='activateLearningCard.html'>
+											<span style="background-image: url(images/home/home_2.png);"></span>
+											<a href="#">
+												<div class="mui-media-body">激活学习卡</div>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="myExam" data-href='myExam.html'>
+											<span style="background-image: url(images/home/home_4.png);"></span>
+											<a href="#">
+												<div class="mui-media-body">我的考试</div>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="myTask" data-href='learningRecord.html'>
+											<span style="background-image: url(images/home/home_3.png);"></span>
+											<a href="#">
+												<div class="mui-media-body">学习记录</div>
+											</a>
+										</li>
+									</ul>
+									<div class="mui-content">
+										<p>
+											<a class="title_nav" href="#">大家热搜</a>
+										</p>
+										<!--热门课程推荐-->
+										<ul class="mui-table-view mui-grid-view" id="hotCourse">
+											<!--数据渲染-->
+											<li v-for="item in hotSearch" class="mui-table-view-cell mui-media mui-col-xs-6" v-on:tap="fun_hotsearch(item.CourseId,item.Src)">
+												<a href="javascript:void(0);">
+													<img class="mui-media-object" v-bind:src="item.Src+'-applt'">
+													<div class="mui-media-body">{{item.Title}}</div>
+												</a>
+											</li>
+										</ul>
+
+										<p>
+											<a class="title_nav" href="#">热点新闻</a>
+											<a href="javascript:void(0)" id="news_more" v-on:tap="fun_moreNews()"> >>更多</a>
+										</p>
+										<ul class="mui-table-view mui-grid-view" id="news">
+											<!--新闻列表-->
+											<div class="newsimg" v-on:tap="fun_newimg(hotNews.Src)">
+												<img v-bind:src="hotNews.Src" width="100%">
+												<p>{{hotNews.Title}}</p>
+											</div>
+
+											<li v-for="(item,index) in hotNews.newlist" class="mui-table-view-cell" v-on:tap="fun_newsclick(item.Id)">
+												<span v-bind:class="color[index]">{{index+1}}</span>
+												<a href="#">{{item.Title}}</a>
+											</li>
+
+										</ul>
+
+										<p>
+											<a class="title_nav" href="#">最新课程</a>
+										</p>
+										<!--更多课程-->
+										<ul class="mui-table-view" id="moreCourse">
+											<li v-for="item in newCourses" v-on:tap="fun_newscourse(item.Id,item.Src)">
+												<img width='40%' v-bind:data-lazyload="item.Src" />
+												<div>
+													<h1>{{item.Title}}</h1>
+													<h3>{{item.Introduce}}</h3>
+													<h4>￥{{item.Price}}</h4>
+												</div>
+											</li>
+										</ul>
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.pullToRefresh.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.pullToRefresh.material.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/app.js"></script>
+		<script src="js/mui.lazyload.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.lazyload.img.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/extra.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/app/home.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

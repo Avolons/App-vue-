@@ -1,0 +1,269 @@
+	html{
+		height: 100%;
+	}
+		body>p{
+				color: #666;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				font-size: 13px;
+				text-align: center;
+				transform: translate(-50%,-50%);
+			}
+	body {
+				font-family: "微软雅黑";
+				height: 100%;;
+			}
+		
+			
+			li {
+				list-style: none;
+			}
+			
+			nav {
+				position: absolute;
+				top: 44px;
+				left: 0;
+				width: 100%;
+			}
+			
+			nav>ul {
+				width: 100%;
+				padding: 0;
+				margin: 0;
+				height: 30px;
+				background-color: white;
+				border-bottom: 1px solid #e7e7e7;
+			}
+			
+			nav>ul>li {
+				font-size: 13px;
+				width: 50%;
+				height: 30px;
+				line-height: 30px;
+				float: left;
+				display: -webkit-box;
+				-webkit-box-pack: center;
+			}
+			
+			nav>ul>li:after {
+				height: 15px;
+				width: 1px;
+				display: block;
+				content: "";
+				position: absolute;
+				right: -1px;
+				top: 10px;
+				background-color: #DADADA;
+			}
+			
+			.mui-bar-nav {
+				background-color: #e93f32;
+				height: 44px;
+			    position: relative;
+			    z-index: 999;
+			}
+			
+			.mui-bar-nav h1 {
+				font-size: 16px;
+				color: #FFFFFF;
+			}
+			
+			.mui-content>.mui-table-view:first-child {
+				margin-top: 40px;
+			}
+			
+			.mui-table-view-cell {
+				padding: 0;
+				/*border-bottom: 3px solid rgba(0,0,0,.2);*/
+			}
+			
+			.mui-table-view-cell>a:not(.mui-btn) {
+				margin: 0;
+			}
+			
+			.mui-table-view .mui-media-object {
+				display: block;
+			}
+			
+			.mui-table-view-cell:after {
+				background-color: transparent;
+				height: 0;
+			}
+			
+			.mui-table-view-chevron .mui-table-view-cell {
+				padding: 0;
+				height: 36px;
+			}
+			
+			.mui-table-view-chevron .mui-table-view-cell>a:not(.mui-btn) {
+				margin: 0;
+			}
+			
+			#moreCourse {
+				background-color: transparent
+			}
+			
+			#moreCourse li p {
+				font-size: 10px;
+				color: #333;
+			}
+			
+			#moreCourse li .last {
+				overflow-wrap: break-word
+			}
+			
+			#moreCourse li {
+				padding: 0 8px;
+				height: 80px;
+				box-sizing: border-box;
+				background-color: #FFFFFF;
+				margin-bottom: 5px;
+			}
+			
+			#moreCourse li:after {
+				content: "";
+				display: block;
+				clear: both;
+			}
+			
+			#moreCourse li a {
+				margin: 0;
+				height: 100%;
+			}
+			
+			#moreCourse li a div {
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-box-pack: justify;
+				height: 100%;
+				margin-left: 10px;
+				float: left;
+				white-space: normal;
+				width: calc(100% - 154px);
+			}
+			
+			#moreCourse li a img {
+				width: 134px;
+				overflow: hidden;
+				margin-right: 10px;
+				display: block;
+				height: 100%;
+			}
+			
+			#moreCourse li a div p {
+				color: #999999;
+				margin-bottom: 10px;
+			}
+			
+			#moreCourse li a div p span {
+				color: #999999;
+				font-size: 10px;
+				display: block;
+				height: 21px;
+				line-height: 21px;
+				width: 10px;
+				float: left;
+				margin-right: 2px;
+			}
+			
+			#moreCourse li a div h3 {
+				margin: 0;
+				line-height: 2;
+				height: calc(100% / 2);
+				color: #5a5a5a;
+				font-size: 16px;
+				margin-top: 10px;
+				font-weight: 400;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: pre; 
+			}
+			
+			.mui-table-view-cell:after {
+				height: 0;
+			}
+			
+			.course-list a {
+				font-size: 12px;
+				height: 35px;
+				line-height: 35px;
+				width: 100%;
+				text-indent: 10px;
+			}
+			
+			nav>ul>li>a {
+				color: #333333;
+				font-size: 13px;
+			}
+			
+			#nav .level_one>a>span {
+				color: #d8d8d8;
+				-webkit-transform: rotate(180deg);
+				font-size: 12px;
+				margin-left: 3px;
+			}
+			
+			#nav .touch>a>span {
+				-webkit-transform: rotate(0);
+			}
+			
+			nav>ul>li ul {
+				display: none;
+				font-size: 13px;
+				padding: 0;
+				width: 100%;
+				position: absolute;
+				top: 30px;
+				left: 0;
+				background-color: #f7f7f7
+			}
+			
+			nav>ul .touch>ul .select:before {
+				content: '√';
+				display: block;
+				float: left;
+				color: #E93F32;
+				height: 40px;
+				line-height: 40px;
+				margin-left: -10%;
+			}
+			
+			nav>ul>li>ul>li {
+				height: 40px;
+				line-height: 40px;
+				box-sizing: border-box;
+				padding-left: 15%;
+				font-size: 12px;
+				width: 100%;
+				box-sizing: border-box;
+				border-bottom: 1px solid #e7e7e7;
+			}
+			
+			nav>ul>li>ul .select {
+				background-color: white;
+			}
+			
+			nav>ul .level_one>a {
+				color: #333333;
+			}
+			
+			nav>ul .touch>ul .select {
+				color: #e93f32;
+			}
+			
+			nav>ul .level_one>ul>li {
+				color: #333333;
+			}
+			
+			nav>ul .touch>a {
+				color: #e93f32;
+			}
+			
+			nav>ul .touch>ul {
+				display: block;
+			}
+			
+			.mui-scroll {
+				top: 74px;
+			}

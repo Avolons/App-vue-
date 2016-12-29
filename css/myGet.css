@@ -1,0 +1,40 @@
+			li {
+				list-style: none;
+				padding: 10px 15px;
+				border-bottom: 1px solid #d2d2d2;
+				box-sizing: border-box;
+				height: 60px;
+			}
+			
+			ul {
+				font-family: "微软雅黑";
+				padding: 0;
+				margin: 0;
+			}
+			
+			li h5 {
+				font-size: 15px;
+				color: #797979;
+			}
+			
+			li div {
+				height: 23px;
+				line-height: 23px;
+			}
+			
+			li div span {
+				font-size: 11px;
+				color: #b4b4b4;
+			}
+			
+			li div span:nth-of-type(2) {
+				float: right;
+				color: #e8b3b4;
+			}
+			
+			li div span:nth-of-type(3) {
+				float: right;
+				margin-right: 3px;
+				margin-top: 3px;
+				color: #e93f32;
+			}

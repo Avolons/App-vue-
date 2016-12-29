@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/myGet.css" />
+	</head>
+
+	<body>
+
+		<div class="mui-content" id="vue-container" v-cloak>
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div class="mui-slider-group">
+					<div class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul id="get_list">
+									<li v-for="ite in recordList" v-on:tap="courseclick(ite)">
+										<h5>{{ite.Title}}</h5>
+										<div>
+											<span>{{ite.Time}}</span>
+											<span>{{ite.Number}}</span>
+											<span class="mui-icon iconfont icon-taolun"></span>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					</idv>
+				</div>
+
+			</div>
+			<script src="js/mui.min.js"></script>
+			<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+			 <script src="js/mui.pullToRefresh.js" type="text/javascript" charset="utf-8"></script>
+    		<script src="js/mui.pullToRefresh.material.js" type="text/javascript" charset="utf-8"></script>
+			<script src="js/extra.js" type="text/javascript" charset="utf-8"></script>
+			<script src="js/app/myGet.js" type="text/javascript" charset="utf-8"></script>
+
+	</body>
+
+</html>

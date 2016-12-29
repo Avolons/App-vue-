@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/learningRecord.css" />
+	</head>
+
+	<body>
+		<div class="mui-content" id="vue-container" v-cloak>
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div class="mui-slider-group">
+					<div class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul id="recodeList">
+									<li v-for="item in recordList" v-on:tap="courseclick(item)">
+										<img v-bind:src="item.Src" />
+										<div class="title">
+											<h1>{{item.Title}}</h1>
+											<p><span class="mui-icon iconfont icon-shizhong"></span>{{item.LearnProcessStr}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.CoursePercentage}}</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<script src="js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.pullToRefresh.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.pullToRefresh.material.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.min.js" charset="utf-8"></script>
+		<script src="js/extra.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/app/learningRecord.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

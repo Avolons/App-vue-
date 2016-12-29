@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>cloud</title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/cloud.css" />
+	</head>
+
+	<body>
+
+
+		<div id="vue-container" v-cloak>
+			<header class="mui-bar mui-bar-nav">
+				<h1 class="mui-title">云课堂</h1>
+				<nav>
+					<ul id="nav">
+						<li class="level_one" v-bind:class="{touch:timeList.val}" v-on:tap="topclick(timeList)">
+							<a href="javascript:void(0);">{{timeList.mes}}<span class="mui-icon iconfont icon-down-copy-copy"></span></a>
+							<ul>
+								<li v-for="item in timeList.child" v-bind:class="{select:item.val}" v-on:tap.stop="twoclick(item,timeList)">{{item.mes}}</li>
+							</ul>
+						</li>
+						<li class="level_one" v-bind:class="{touch:typeList.val}" v-on:tap="topclick(typeList)">
+							<a href="javascript:void(0);">{{typeList.mes}}<span class="mui-icon iconfont icon-down-copy-copy"></span></a>
+							<ul>
+								<li v-for="item in typeList.child" v-bind:class="{select:item.val}" v-on:tap.stop="twoclick(item,typeList)">{{item.mes}}</li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</header>
+			<div class="mui-content">
+				<div id="slider" class="mui-slider mui-fullscreen">
+					<div class="mui-slider-group">
+						<div class="mui-slider-item mui-control-content mui-active">
+							<div id="scroll" class="mui-scroll-wrapper">
+								<div class="mui-scroll" style="position:absolute;  top: 34px;width: 100%;padding-bottom: 40px;">
+									<ul class="mui-table-view" id="moreCourse">
+										<li  v-for="item in cloudList" v-on:tap="courseclick(item)">
+											<a href="javascript:void(0);" class="">
+												<img class=" mui-pull-left" v-bind:src="item.Src">
+												<div class="title">
+													<h3>{{item.Title}}</h3>
+													<template v-if="item.Time">
+														<p><span class="mui-icon iconfont icon-shizhong"></span>上次学习时间：{{item.Time}}</p>
+													</template>
+													<template v-else>
+														<p><span class="mui-icon iconfont icon-shizhong"></span>上次学习时间：暂未开始学习</p>
+													</template>
+												</div>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<script src="js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/fastclick.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.pullToRefresh.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.pullToRefresh.material.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/extra.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/app/cloud.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

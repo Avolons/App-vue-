@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/courseSearch.css" />
+	</head>
+
+	<body>
+		<div id="vue-container" v-cloak>
+			<header class="mui-bar mui-bar-nav" style="padding: 0  15px;">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="javascript:void(0);"></a>
+				<div class="mui-input-row">
+					<input id="search" type="search" autofocus="autofocus" placeholder="搜索课程、分类、讲师" v-model="ajaxData.Searchstr" v-on:keyup="fun_keysearch()">
+					<span class="mui-icon mui-icon-clear" v-show="ajaxData.Searchstr" v-on:tap="fun_clear()"></span>
+				</div>
+				<span id="static_search" class="mui-icon mui-icon-search" v-on:tap="fun_iconsearch()">
+			</span>
+			</header>
+			<div class="mui-content" id="search_hist" v-show="!ajaxData.Searchstr">
+				<div id="history">
+					<h3>搜索历史</h3>
+					<span class="mui-icon mui-icon-trash" id="clear" v-on:tap="fun_histdel()"></span>
+				</div>
+				<ul class="history">
+					<!--搜索历史区域-->
+					<li v-for="item in histvalue" v-on:tap="fun_histclick(item)">{{item}}</li>
+				</ul>
+				<div id="hot">
+					<h3>热门搜索</h3>
+				</div>
+				<ul class="hot" id="hotSearch">
+
+					<!--热门搜索区域-->
+					<li v-for="item,index in hotSearch" v-on:tap="fun_histclick(item.Title)">
+						<span v-bind:class="'color'+(index+1)">{{index+1}}</span>
+						<a href="javascript:void(0);">{{item.Title}}</a>
+					</li>
+				</ul>
+			</div>
+			<div class="mui-content" id="search_course" v-show="ajaxData.Searchstr">
+				<ul id="search_list" class="mui-table-view">
+					<p>没有相关数据</p>
+					<!--课程渲染区域-->
+					<li v-for="item in courseList" v-on:tap="fun_courseSearch(item.Id,item.Src)">
+						<img width="40%" v-bind:src="item.Src">
+						<div>
+							<h1>{{item.Title}}</h1>
+							<h3>{{item.Introduce}}</h3>
+							<h4>{{item.Price}}</h4>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script src="js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.pullToRefresh.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.pullToRefresh.material.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.lazyload.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.lazyload.img.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.min.js" charset="utf-8"></script>
+		<script src="js/extra.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/app/courseSearch.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>
